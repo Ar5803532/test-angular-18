@@ -1,13 +1,40 @@
-@for(product of productList(); track $index; let i = $index) {
-<p>{{ i + 1 }} : {{ product.name }}</p>
+<div class="flex flex-col gap-10">
+<div class="flex flex-col gap-4">
+<!-- @for(product of productList(); track $index; let i = $index) {
+<p class="text-base">{{ i + 1 }} : {{ product.name }}</p>
 }@empty {
 <p>NO PRODUCT DATA NAJA</p>
-}
+} -->
+</div>
 
-{{ counter() }}
+<div class="flex flex-col gap-6">
+  <div class="flex items-center gap-4 cursor-pointer">
+    <p>COUNTER</p>
+    <p class="text-base p-2">{{ counter() }}</p>
+    <button class="btn-red p-4 rounded-xl" (click)="onClickUpdateCount()"><p class="text-white">UPDATE COUNT</p></button>
+  </div>
+  <div class="flex items-center gap-4">
+    <p>COUNTER X2</p>
+    <p class="text-base p-2">{{ counterX2() }}</p>
+    <button class="btn-yellow p-4 rounded-xl" (click)="onClickUpdateNewCount()"><p class="text-white">UPDATE NewCOUNT</p></button>
+  </div>
+  <div class="flex items-center gap-4">
+    <p>NEW COUNTER</p>
+    <p class="text-base p-2">{{ newCounter().value }}</p>
+    <button class="btn-green" (click)="onClickDeleteProduct()"><p class="text-white">DELETE PRODUCT</p></button>
+  </div>  
+  <div>
+    <p>{{signalComputed()}}</p>
+    <button class="btn-blue" (click)="onClickUpdateSubject()">UPDATE SUBJECT</button>
+  </div>
+  <p>SIGNAL1 & SIGNAL2 => {{signalComputed()}}</p>
+  <p class="text-2xl">SIGNAL SUM => {{sumValue()}}</p>
+  <div class="flex gap-4">
+    <button class="btn-red" (click)="onClickSumSignal('signal1')">UPDATE SIG1</button>
+    <button class="btn-green" (click)="onClickSumSignal('signal2')">UPDATE SIG2</button>
+  </div>
+</div>
 
-{{ newCounter().value }}
+<card-component [dataInput]="counter()" />
+</div>
 
-<button (click)="onclickUpdateCount()">UPDATE COUNT</button>
-<button (click)="onClickDeleteProduct()">DELETE PRODUCT</button>
-<button (click)="onClickUpdateNewCount()">UPDATE NewCOUNT</button>
